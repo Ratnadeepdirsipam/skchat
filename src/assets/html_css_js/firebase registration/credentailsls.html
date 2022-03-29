@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0" />
+
+	<script src=
+"https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js">
+	</script>
+
+	<script src=
+"https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js">
+	</script>
+	
+	<script type="text/javascript">
+
+    //var wel = "welcome to registration and login page.";
+    //Interface.t_t_s(wel);
+
+	const firebaseConfig = {
+    apiKey: "AIzaSyBDPVFR4fpJbP655fi0gECiX3rB_DEk1fE",
+    authDomain: "health-report-334d5.firebaseapp.com",
+    projectId: "health-report-334d5",
+    storageBucket: "health-report-334d5.appspot.com",
+    messagingSenderId: "192843149376",
+    appId: "1:192843149376:web:51df5b1c10bd7779be6fa5",
+    measurementId: "G-L1GFZMT005"
+      };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+    const auth = firebase.auth();
+    
+    // Signup function
+    function signUp() {
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    
+    const promise = auth.createUserWithEmailAndPassword(
+        email.value,
+        password.value
+    );
+    promise.catch((e) => alert(e.message));
+    alert("SignUp Successfully");
+    Interfacecredentials.navigatepage();
+    }
+    
+    // SignIN function
+    function signIn() {
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    const promise = auth.signInWithEmailAndPassword(
+                email.value, password.value);
+    promise.catch((e) => alert(e.message));
+    Interfacecredentials.navigatepage();
+    }
+    
+    // SignOut
+    function signOut() {
+    auth.signOut();
+    alert("SignOut Successfully from System");
+    }
+    
+    // Active user to homepage
+    firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        var email = user.email;
+        alert("Active user " + email);
+    } else {
+        alert("No Active user Found");
+    }
+    });
+    
+	</script>
+   
+	<title>Login System</title>
+</head>
+
+<body>
+
+<style>
+body{
+    margin:0px;
+    
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/health-report-334d5.appspot.com/o/firebase%2Fbg4.jpg?alt=media&token=ba1fd9cd-bc63-4f1c-8fd1-90293e674443');
+}
+
+.formContainer{
+    text-align:center;  
+}
+
+#ral {
+    color:orange;
+}
+#email{
+    background-color:black;
+    color:white;
+    border-radius:5px;
+    width:250px;
+    height:30px;
+}
+#password{
+    background-color:black;
+    color:white;
+    border-radius:5px;
+    width:250px;
+    height:30px;
+}
+#signUp {
+    background-color:blue;
+    color:white;
+    border-radius:5px;
+    height:25px;
+    width:100px;
+    margin-left:100px;
+    margin-top:-100px;
+
+}
+#signIp {
+    background-color:green;
+    color:white;
+    border-radius:5px;
+    height:25px;
+    width:100px;
+    margin-left:100px;
+    margin-top:-100px;
+
+}
+#signOut {
+    background-color:red;
+    color:white;
+    border-radius:5px;
+}
+</style>
+
+
+<div style="text-align:center; margin-top:100px;">
+    <button type="button" id="signUp_display" style="color:white; background-color:blue; width:100px; height:50px;">
+        Register
+    </button>
+    <button type="button" id="signIp_display" style="color:white; background-color:green; width:100px; height:50px;">
+        SignIn
+    </button>
+</div>
+
+	<div style="display:none;" id="div_display" class="formContainer" >
+		<h1 id="ral"></h1>
+		<input type="email"
+			placeholder="email here" id="email" />
+		<br>
+        <br>
+		<input type="password"
+			placeholder="password here" id="password" />
+		<br />
+        <br>
+        <br>
+    </div>
+    <div style="text-align:center; margin-top:100px;">
+        <button type="button" id="signUp" onclick="signUp()" style="display:none; color:white; background-color:blue; width:100px; height:30px;">
+            Register
+        </button>
+        <button type="button" id="signIp" onclick="signIn()" style="display:none; color:white; background-color:green; width:100px; height:30px;">
+            SignIn
+        </button>
+    </div>
+    <br>
+    <button type="button" id="page_navigation"  style=" color:white; background-color:green; width:100px; height:30px;">
+        page navigation
+    </button>
+   
+		<!--button style="display:none;" onclick="signOut()" id="signOut">
+			SignOut
+		</button-->
+	
+    <script type="text/javascript">
+        let sup_d = document.getElementById("signUp_display");
+        let sin_d = document.getElementById("signIp_display");
+        let sup = document.getElementById("signUp");
+        let sin = document.getElementById("signIp");
+        let sout = document.getElementById("signOut");
+        let d_d = document.getElementById("div_display");
+        let d_h1 = document.getElementById("ral");
+        let sign_up = document.getElementById("signup_display");
+        let sign_in = document.getElementById("signin_display");
+        let pagen = document.getElementById("page_navigation");
+
+        pagen.addEventListener('click',function(){
+            Interfacecredentials.navigatepage();
+        })
+       
+        sup_d.addEventListener('click',function(){
+
+            let dnurl1 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/tjs.js";
+            let dnurl2 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/teacher_models.js";
+            let dnurl3 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/gltf.js";
+            let dnurl4 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/select_course.html";
+            let dnurl5 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/classroom3d.html";
+
+            
+            
+            Interfacecredentials.download_any_file("application/js",dnurl1,"tjs.js");
+            Interfacecredentials.download_any_file("application/js",dnurl2,"teacher_models.js");
+            Interfacecredentials.download_any_file("application/js",dnurl3,"gltf.js");
+            Interfacecredentials.download_any_file("application/js",dnurl4,"select_course.html");
+            Interfacecredentials.download_any_file("application/js",dnurl5,"classroom3d.html");
+                       
+            if(d_d.style.display === 'none' || sup.style.display === 'none')
+            {
+                d_h1.innerHTML = "Registration";
+                d_d.style.display = "block";
+                sup.style.display = "block";
+                sup.style.display = 'block';
+                //sign_up.style.display = 'block';
+            }
+            else //if(this.angulartopics.nativeElement.style.visibility == 'vissible')
+            {
+               
+                d_d.style.display = 'none';
+                sup.style.display = "none";
+                sup.style.display = 'none';
+                //sign_up.style.display = 'none';
+            }
+
+            if(true)
+            {
+                sin.style.display = 'none';
+            }
+        })
+
+        sin_d.addEventListener('click',function(){
+            let dnurl1 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/tjs.js";
+            let dnurl2 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/teacher_models.js";
+            let dnurl3 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/gltf.js";
+            let dnurl4 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/select_course.html";
+            let dnurl5 = "https://ksthreejs.s3.ap-south-1.amazonaws.com/SproudKnowledgeFromSeed/classroom3d.html";
+            
+            Interfacecredentials.download_any_file("application/js",dnurl1,"tjs.js");
+            Interfacecredentials.download_any_file("application/js",dnurl2,"teacher_models.js");
+            Interfacecredentials.download_any_file("application/js",dnurl3,"gltf.js");
+            Interfacecredentials.download_any_file("application/js",dnurl4,"select_course.html");
+            Interfacecredentials.download_any_file("application/js",dnurl5,"classroom3d.html");
+           
+            if(true)
+            {
+                sup.style.display = 'none';
+            }
+           
+            if(d_d.style.display === 'none' || sin.style.display === 'none')
+            {
+                d_h1.innerHTML = "Signin";
+                d_d.style.display = "block";
+                sin.style.display = "block";
+                sin.style.display = 'block';
+                //sign_in.style.display = 'block';
+            }
+            else //if(this.angulartopics.nativeElement.style.visibility == 'vissible')
+            {
+               
+                d_d.style.display = 'none';
+                sin.style.display = "none";
+                sin.style.display = 'none';
+                //sign_in.style.display = 'none';
+            }
+
+            
+        })
+
+
+    </script>
+</body>
+
+</html>

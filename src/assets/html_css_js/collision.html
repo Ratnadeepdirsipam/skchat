@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+		<style>
+			body {
+				background-color:#f0f0ff;
+			}
+			
+			div{
+				position:absolute;
+			}
+			
+			.ball{
+				border-radius:50%;
+				width:20vmin;
+				height:20vmin;
+			}
+			
+			.red{
+				background-color:red;
+			}
+			
+			.green{
+				background-color:green;
+			}
+			
+			.lowerLeft{
+				bottom:20vmin;
+				left:5px;
+			}
+			
+			.lowerRight{
+				bottom:20vmin;
+				right:5px;
+			}
+			
+			button{
+				padding:1em;
+			}
+		</style>
+    </head>
+    <body>
+      <h3>demo non-canvas collision</h3>
+      <p id="result"></p>
+        <div class="ball red"></div>
+        <div class="ball green"></div>
+        <div class="lowerLeft">
+          <button onclick="randRed()">
+            move red ball
+          </button>
+        </div>
+        <div class="lowerRight">
+        <button onclick="randGreen()">
+          move green ball
+        </button>
+        </div>
+		<script>
+			let red, green;
+
+			const $ = (sel) => 
+			  document.querySelector(sel);
+			
+			const rand = () => 
+			  `${Math.floor(Math.random()*40)+20}vmin`;
+			
+			onload = () => {
+			  red = $('.red');
+			  green = $('.green');
+			  
+			  randRed();
+			  randGreen();
+			}
+			
+			const randRed = () => {
+			  red.style.left = rand();
+			  red.style.top = rand();
+			  
+			  collisionTest();
+			}
+			
+			const randGreen = () => {
+			  green.style.left = rand();
+			  green.style.top = rand();
+			  
+			  collisionTest();
+			}
+			
+			const collisionTest = () => {
+			  let redTop = parseInt(red.style.top);
+			  let redLeft = parseInt(red.style.left);
+			  let greenTop = parseInt(green.style.top);
+			  let greenLeft = parseInt(green.style.left);
+			  
+			  result.innerText = `red: ${redLeft} ${redTop}, green: ${greenLeft} ${greenTop}`;
+			  
+			  let dx = redLeft - greenLeft;
+			  let dy = redTop - greenTop;
+			  
+			  if(Math.hypot(dx,dy)<20)
+				result.innerText += "  Collided!";
+			}
+		</script>
+
+    </body>
+</html>

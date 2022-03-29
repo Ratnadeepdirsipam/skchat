@@ -1,0 +1,110 @@
+<!Doctype>
+<html>
+    <head>
+        <title>rectangle collision detenction</title>
+    </head>
+    <body>
+
+        <div>
+            <div id="left">left</div>
+            <div id="right">right</div>
+            <div id="top">top</div>
+            <div id="bottom">bottom</div>
+        </div>
+        <p id = 'gfg'></p>
+        
+            <div id="red_b" style="width:40px; height:40px; background-color:red; position:absolute;" ></div>
+            <div id="green_b" style="width:40px; height:40px; background-color:green; text-align:center; margin-left:100px; margin-top:100px; position:absolute;"></div>
+       
+        <script type="text/javascript">
+            let redbox = document.getElementById('red_b')
+            let greenbox = document.getElementById('green_b')
+            let lm = 10
+            let rm = 10
+            let tm = 10
+            let bm = 10
+            //.getBoundingClientRect();
+
+            document.getElementById('red_b').addEventListener('onLoad',getPositionXY)
+
+            function getPositionXY(element) {
+				var rect = element.getBoundingClientRect();
+				document.getElementById('gfg').innerHTML =
+				'X: ' + rect.x + ', ' + 'Y: ' + rect.y
+			}
+
+            function printMousePos(event) {
+                document.body.textContent =
+                  "clientX: " + event.clientX +
+                  " - clientY: " + event.clientY;
+              }
+
+            document.getElementById('left').addEventListener('click', function(){
+                lm = lm - 10
+                redbox.style.marginLeft = `${lm}`+'px'
+                console.log("redbox.x : ", redbox.x, redbox.clientX)
+            console.log("redbox.y : ", redbox.y)
+
+            console.log("redbox.width : ", redbox.width)
+            console.log("redbox.height : ", redbox.height)
+            collisionTest()
+            })
+
+            document.getElementById('right').addEventListener('click', function(){
+                lm = lm + 10
+                redbox.style.marginLeft = `${lm}`+'px'
+
+                console.log("redbox.x : ", redbox.x)
+            console.log("redbox.y : ", redbox.y)
+
+            console.log("redbox.width : ", redbox.width)
+            console.log("redbox.height : ", redbox.height)
+
+            collisionTest()
+            })
+
+            document.getElementById('top').addEventListener('click', function(){
+                tm = tm - 10
+                redbox.style.marginTop = `${tm}`+'px'
+            })
+
+            document.getElementById('bottom').addEventListener('click', function(){
+                tm = tm + 10
+                redbox.style.marginTop = `${tm}`+'px'
+            })
+
+            console.log("redbox.x : ", redbox.x)
+            console.log("redbox.y : ", redbox.y)
+
+            console.log("redbox.width : ", redbox.width)
+            console.log("redbox.height : ", redbox.height)
+
+            document.addEventListener('onload',function(){
+                console.log("redbox.style.marginLeft : "+redbox.style.marginLeft)
+                console.log("redbox.style.marginTop : "+redbox.style.marginTop)
+                if(redbox.x + redbox.width >= greenbox.x && redbox.x <= greenbox.x + greenbox.width)
+                {
+                    console.log('collision happened')
+                    return true
+                }
+            })
+
+            const collisionTest = () => {
+                let redTop = parseInt(redbox.style.top);
+                let redLeft = parseInt(redbox.style.left);
+                let greenTop = parseInt(greenbox.style.top);
+                let greenLeft = parseInt(greenbox.style.left);
+                
+                result.innerText = `red: ${redLeft} ${redTop}, green: ${greenLeft} ${greenTop}`;
+                
+                let dx = redLeft - greenLeft;
+                let dy = redTop - greenTop;
+                
+                if(Math.hypot(dx,dy)<20)
+                  result.innerText += "  Collided!";
+                  console.log()
+              }
+
+        </script>
+    </body>
+</html>

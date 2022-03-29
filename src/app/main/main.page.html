@@ -1,0 +1,180 @@
+<!--ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      chat
+    </ion-title>
+  </ion-toolbar>
+</ion-header-->
+<!--app-header pageName="home"></app-header-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<ion-toolbar> 
+  <ion-segment [(ngModel)]="selectedTab">
+    <ion-segment-button  value="chat" >
+      <ion-label>chat</ion-label>
+    </ion-segment-button>
+    <ion-segment-button  value="status">
+      <ion-label>status</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="coding">
+      <ion-label>videocall</ion-label>
+    </ion-segment-button>
+    <ion-segment-button  value="friends" >
+      <ion-label>friends</ion-label>
+    </ion-segment-button>
+    
+  </ion-segment>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true">
+<ion-list  *ngIf="selectedTab == 'chat'">
+  <input type="text" #inp >
+  <button type="button" (click)="insertChatList(inp.value)">submit</button>
+  <br>
+<div id="chatuserfor" *ngFor="let r of this.allChatList">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <img src="assets\images\demo.jpg" style=" 
+          
+          margin-top:10px; 
+          margin-left:5px; 
+          width:50px; 
+          height:50px; 
+          background-color:aqua; 
+          border:1px solid green; 
+          border-radius:200px;
+        ">
+      </div>
+      <div class="col-10">
+        <span style="color:white; margin-top:15px;
+        display: flex; justify-content: flex-front;
+        ">
+          {{r.userName}}
+      </span><br>
+      <span style="color:white; margin-top:55px;
+        display: flex; justify-content: flex-front;
+        ">
+        {{r.datetime.slice(9,20)}}
+      </span>
+        <!-- <span>{{r.userName}}</span><br>
+        <span>{{r.datetime}}</span> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+</ion-list>
+<ion-list *ngIf="selectedTab == 'status'">
+  <p><a href="java">java</a></p>
+  <p (click)="addItem()">create</p>
+  <!-- <div id="chatuserfor" *ngFor="let r of allStatusList">
+    <div id="chatuseravatar">{{r.name | slice:0:1}}</div>
+    <div style="margin-top:-40px; color:white; margin-left:-200px;" (click)="onSubmit(r.deepu)">{{r.name}}</div>
+  </div> -->
+<!-- <p (click)="retrive()">status</p> -->
+  <!-- <input type="input" placeholder=" id" #idDB>
+  <input type="input" placeholder=" name" #nameDB>
+  <button type="button" (click)="addData(idDB.value,nameDB.value)" style="text-align:center; background-color:aqua; color:black;">submit</button>
+  <button type="button" (click)="removeItem(-1)" style="text-align:center; background-color:aqua; color:black;">remove</button>
+
+<div *ngFor="let l of listData; let i = index;">
+  <p style="color:white; width:100%; height:30px; background-color:grey;">{{i}} : {{l.name}}<span style=" display: flex; justify-content: flex-end; color:red; margin-top:-20px; margin-right:5px;" (click)="removeItem(i)">del</span></p>
+</div> -->
+</ion-list>
+<ion-list *ngIf="selectedTab == 'coding'">
+  <!-- <div id="chatuserfor" *ngFor="let r of allVideocallList">
+    <div id="chatuseravatar">{{r.userName}}</div>
+    <div style="margin-top:-40px; color:white; margin-left:-200px;" (click)="onSubmit(r.deepu)">{{r.userName}}</div>
+  </div> -->
+  <!-- <div id="chatuserfor" *ngFor="let cl of codeLanguages">
+    <div (click)="codeLanguagesMethod(cl.id,cl.topic)" style="margin-top:20px; text-align:center; color:white;">{{cl.topic}}</div>
+  </div> -->
+  <!--[isMultiple]="true"-->
+  <ionic-selectable 
+    [(ngModel)]="port"
+    [items]="friendsinterfaceinfo"
+    itemValueField="phone"
+    itemTextField="name"
+    [canSearch]="true" 
+    (onChange)="portChange($event)">
+          <ng-template ionicSelectableHeaderTemplate>
+            <!--ion-navbar style="display: flex; background: #99226e; color: white;"-->
+              <ion-title style="padding: 15px; font-size: 16px; background: #99226e; color: white;">
+                friends
+              </ion-title>
+            <!--/ion-navbar-->
+          </ng-template>
+          <ng-template ionicSelectableValueTemplate let-ports="value">
+            <div class="ionic-selectable-value-item">
+              {{formatPorts(ports)}}
+            </div>
+          </ng-template>
+          <ng-template  ionicSelectableFooterTemplate>
+            <ion-footer>
+              <ion-toolbar>
+                <ion-row text-center>
+                  <ion-col size="4" style="text-align: center;">
+                    <ion-button style="font-size: 14px !important; font-weight: bold !important;" fill="clear"
+                      (click)="clear()" id="btnCancel">
+                      Cancel
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: center;">
+                    <ion-button style="font-size: 14px !important; font-weight: bold !important;" fill="clear"
+                      (click)="confirm()" id="btnConfirm">
+                      Confirm
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-toolbar>
+            </ion-footer>
+          </ng-template>
+</ionic-selectable>
+</ion-list>
+<ion-list *ngIf="selectedTab == 'friends'">
+  <div id="chatuserfor" *ngFor="let fds of this.allfriendRequests; let i = index;">
+    <div class="container">
+      <!--*ngIf="fds.phone !== noselfFriend"-->
+      <div>
+        <div  class="row">
+          <div class="col-2">
+            <img src="assets\images\demo.jpg" style=" 
+              
+              margin-top:10px; 
+              margin-left:5px; 
+              width:50px; 
+              height:50px; 
+              background-color:aqua; 
+              border:1px solid green; 
+              border-radius:200px;
+            ">
+          </div>
+          <div class="col-7">
+            <span style="color:white; margin-top:15px;
+            display: flex; justify-content: flex-front;
+            ">
+              {{fds.name}}
+          </span>
+          </div>
+          <div id="reqstatus" class="col-3"><br>
+            <button *ngIf="this.ifsendRequest" type="button" (click)="sendRequest(fds.name,fds.phone,fds.email,fds.password,fds.requeststatus)">
+              follow
+          </button>
+          <button *ngIf="this.ifrequested" type="button" (click)="followRequest(fds.name,fds.phone,fds.email,fds.password,fds.requeststatus)">
+           requested
+        </button>
+        <button *ngIf="this.iffollowing" type="button" (click)="followRequest(fds.name,fds.phone,fds.email,fds.password,fds.requeststatus)">
+          following
+      </button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</ion-list>
+</ion-content>

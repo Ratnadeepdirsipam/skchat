@@ -1,0 +1,57 @@
+<!Doctype>
+<html>
+    <head>
+        <title>speech to text</title>
+    </head>
+    <body>
+        <div style="text-align:center; margin-top:100px;">
+            <button onclick="runSpeechRecognition()" style="
+        background-color:#008000;
+        width:300px;
+        height:50px;
+        font-size:30;
+        color:white;
+
+        ">click and speak</button>
+        <h1 id="op">output</h1>
+        </div>
+        
+        <script type="text/javascript">
+            let output = document.getElementById('op')
+            function runSpeechRecognition() {
+               
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+                
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                //action.innerHTML = "<small>listening</small>";
+                        //document.getElementById("recmic").style.visibility = "visible";
+                    };
+                
+                    recognition.onspeechend = function() {
+                        //action.innerHTML = "<small>stopped listening</small>";
+                        //document.getElementById("recmic").style.visibility = "hidden";
+                        recognition.stop();
+                    }
+                
+                    // This runs when the speech recognition service returns result
+                    recognition.onresult = function(event) {
+                        var transcript = event.results[0][0].transcript;
+                        var confidence = event.results[0][0].confidence;
+                        //output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+                        //output.classList.remove("hide");
+                        //op = output.innerHTML=transcript;
+                        output.innerHTML = transcript
+                        console.log(transcript)
+                    };
+                
+                     // start recognition
+                     recognition.start();
+                
+                     //return op
+                     //textToAudio();
+                }
+        </script>
+    </body>
+</html>

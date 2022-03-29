@@ -24,15 +24,25 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+                
               },
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "**/*",
+                "input": ".node_modules/@zoomus/websdk/dist/lib/",
+                "output": ".node_modules/@zoomus/websdk/dist/lib/"
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": [],
+            "scripts": [
+              "node_modules/annyang/dist/annyang.min.js",
+              "node_modules/jquery/dist/jquery.min.js"
+            ],
+            
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -171,6 +181,7 @@
     }
   },
   "cli": {
+    "analytics": "5da48653-429b-47ae-bb1c-5ac2b9a2d085",
     "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {

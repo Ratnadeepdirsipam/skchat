@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button id="backButtonforCodeLanguages" defaultHref="main"></ion-back-button>
+    <ion-title id="titleforCodeLanguages">kotlin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <div [formGroup]="myGroup">
+      <input formControlName="firstName">
+    </div>
+  
+  
+  </form>
+</ion-content>

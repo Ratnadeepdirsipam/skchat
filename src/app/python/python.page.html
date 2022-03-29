@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button id="backButtonforCodeLanguages" defaultHref="main"></ion-back-button>
+    <ion-title id="titleforCodeLanguages">python</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <h1><a  href="washingmachinesk">washing machine</a></h1>
+  <h1>boolean game</h1>
+  <button type="button" (click)="multiple_compiler()">multiple compiler</button>
+  <div style="
+  border:2px solid green;
+  width:98%; 
+  ">
+  
+  <div style="padding:20px;"> 
+		<button id="moveleft" (longPress)="moveL()">Move Left</button>  
+		<button id="moveright" (longPress)="moveR()">Move right</button> 
+		<button id="movedown">Move Down</button> 
+		<button id="moveup">Move Up</button>
+	</div><br>
+
+  <div>
+    <div (click)="moveL()">move right</div>
+    <div (click)="moveR()">move Left</div>
+    <div (click)="moveT()">move Top</div>
+    <div (click)="moveB()">move Bottom</div>
+  </div>
+	<div id="textbox" style="position:absolute;padding:10px;background:red; height:10px; width:10px;"></div><br>
+<!--[style.margin-left.px]="100"-->
+  <div 
+  [style.margin-left.px]="moveLd"
+  style="position:absolute;padding:10px;background:green; height:10px; width:10px;"></div>
+
+  <!--[ngStyle]="{backgroundColor: getColor()}" -->
+  <!--[ngStyle]="{'margin-left': marginL}"
+  [ngStyle]="{'margin-top': marginT}"-->
+  <div 
+  style="position:absolute;padding:10px;background:orange; height:10px; width:10px;"
+  [ngStyle]="{'margin-left': marginL}"
+  [ngStyle]="{'margin-top': marginT}"
+  ></div>
+
+  <div id="bluebox" style="position:absolute;padding:10px;background:blue; height:10px; width:10px;"></div>
+
+  
+  <div *ngFor='let in of counter(20) ;let i = index'>
+    <div class="leftdiv"></div>
+    <div style="display: flex; justify-content: flex-end"><div class="rightdiv"></div></div>
+    
+    <div class="leftdiv1"></div>
+    <div style="display: flex; justify-content: flex-end"><div class="rightdiv1"></div></div>
+    
+    <div class="leftdiv2"></div>
+    <div style="display: flex; justify-content: flex-end"><div class="rightdiv2"></div></div>
+    
+    <div class="leftdiv3"></div>
+    <div style="display: flex; justify-content: flex-end"><div class="rightdiv3"></div></div>
+  
+  </div>
+
+    
+    <!--div style="display: flex; justify-content: space-around">
+      <div>Left</div>style="
+    width:20px; height:20px; 
+    background-color:aqua;
+    margin-left:0px;
+    margin-right:0px;
+    margin-top:0px;
+    margin-bottom:0px;"
+      <div>Middle</div>
+     <div>Right</div>
+   </div-->
+   
+  
+  </div>
+</ion-content>

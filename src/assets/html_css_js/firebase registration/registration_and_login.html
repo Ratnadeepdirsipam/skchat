@@ -1,0 +1,167 @@
+<!Doctype>
+<html>
+    <head>
+        <title>Registration and Login Page</title>
+    </head>
+    <body>
+        <h1 id="regandloginHeading" style="text-align:center; color:blue;">Registration</h1>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+
+  
+
+
+  <div id="registrationDiv">
+    <div class="container">
+        <br>
+        <form >
+          <div class="form-group">
+            <div class="form-group">
+              <label for="pwd">Name:</label>
+              <input type="text" class="form-control"  id="pwd" placeholder="Enter name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Phone:</label>
+              <input type="tel" class="form-control"  id="pwd" placeholder="Enter phone" name="phone">
+            </div>
+            <label for="email">Email:</label>
+            <input type="email" class="form-control"  id="email" placeholder="Enter email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control"  id="password" placeholder="Enter password" name="pwd">
+          </div>
+           <button type="submit" class="btn btn-primary" onclick="signUp()">registration</button>
+        </form>
+        <p style="margin-top:5px;">if you already have an account? <span id="RegistrationTosignInId" style="color:red;">SignIn</span></p>
+      </div>
+    
+  </div>
+
+  <div id="signInDiv">
+    <div class="container">
+        <br>
+        <form >
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control"  id="email" placeholder="email or phone" name="email">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control"  id="password" placeholder="Enter password" name="pwd">
+          </div>
+         
+           <button type="submit" class="btn btn-primary" onclick="signIn()">Sign In</button>
+        </form>
+        <p style="margin-top:5px;">if you dont have an account? <span id="signInToRegistrationId" style="color:green;">registration</span></p>
+      </div> 
+    
+  </div>
+
+
+  <div id="homePageId">
+    <iframe src="home.html"></iframe>
+  </div>
+  
+
+  <script type="text/javascript">
+      let registrationSection = document.getElementById('registrationDiv')
+      let RegistrationTosignInSection = document.getElementById('RegistrationTosignInId') 
+      let signInSection = document.getElementById('signInDiv')
+      let signInToRegistrationSection = document.getElementById('signInToRegistrationId')
+      let regandloginHeadingSection = document.getElementById('regandloginHeading')
+      let homeSection = document.getElementById('homePageId')
+      homeSection.style.display = 'none'
+      signInSection.style.display = 'none'
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBDPVFR4fpJbP655fi0gECiX3rB_DEk1fE",
+        authDomain: "health-report-334d5.firebaseapp.com",
+        projectId: "health-report-334d5",
+        storageBucket: "health-report-334d5.appspot.com",
+        messagingSenderId: "192843149376",
+        appId: "1:192843149376:web:51df5b1c10bd7779be6fa5",
+        measurementId: "G-L1GFZMT005"
+          };
+        
+        // Initialize Firebase
+       
+        firebase.initializeApp(firebaseConfig);
+    
+    const auth = firebase.auth();
+
+      RegistrationTosignInSection.addEventListener('click',function(){
+        RegistrationTosignIn()
+      })
+
+      signInToRegistrationSection.addEventListener('click',function(){
+        signInToRegistration()
+      })
+
+      function signInToRegistration()
+      {
+        
+        regandloginHeadingSection.innerHTML = 'Registration'
+        registrationSection.style.display = 'block'  
+        signInSection.style.display = 'none'
+      }
+      function RegistrationTosignIn()
+      {
+         
+        regandloginHeadingSection.innerHTML = 'Sign In'
+        registrationSection.style.display = 'none'
+        signInSection.style.display = 'block'
+        
+      }
+
+      
+    
+    // Signup function
+    function signUp() {
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    
+    const promise = auth.createUserWithEmailAndPassword(
+        email.value,
+        password.value
+    );
+    //promise.catch((e) => alert(e.message));
+    //alert("SignUp Successfully");
+    //Interfacecredentials.navigatepage();
+    //location.href = 'home.html'
+    //homeSection.style.display = 'block'
+    window.location.href = 'home.html';
+    }
+    
+    // SignIN function
+    function signIn() {
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    const promise = auth.signInWithEmailAndPassword(
+                email.value, password.value);
+    promise.catch((e) => {
+      alert(e.message)
+      window.location.href = 'home.html';
+      //homeSection.style.display = 'block'
+    });
+    //Interfacecredentials.navigatepage();
+    //location.href = 'home.html'
+    
+    }
+    
+    // SignOut
+    function signOut() {
+    auth.signOut();
+    alert("SignOut Successfully from System");
+    }
+
+  </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button id="backButtonforCodeLanguages" defaultHref="main"></ion-back-button>
+    <ion-title id="titleforCodeLanguages">java</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Port</ion-label>
+    <!--ionic-selectable
+      [(ngModel)]="port"
+      [items]="ports"
+      itemValueField="id"
+      itemTextField="name"
+      [canSearch]="true"
+      [isMultiple]="true" 
+      (onChange)="portChange($event)">
+    </ionic-selectable-->
+
+    <ionic-selectable 
+    [(ngModel)]="port"
+    [items]="ports"
+    itemValueField="id"
+    itemTextField="name"
+    [canSearch]="true"
+    [isMultiple]="true" 
+    (onChange)="portChange($event)">>
+          <ng-template ionicSelectableHeaderTemplate>
+            <!--ion-navbar style="display: flex; background: #99226e; color: white;"-->
+              <ion-title style="padding: 15px; font-size: 16px; background: #99226e; color: white;">
+                skills
+              </ion-title>
+            <!--/ion-navbar-->
+          </ng-template>
+          <ng-template ionicSelectableValueTemplate let-ports="value">
+            <div class="ionic-selectable-value-item">
+              {{formatPorts(ports)}}
+            </div>
+          </ng-template>
+          <ng-template  ionicSelectableFooterTemplate>
+            <ion-footer>
+              <ion-toolbar>
+                <ion-row text-center>
+                  <ion-col size="4" style="text-align: center;">
+                    <ion-button style="font-size: 14px !important; font-weight: bold !important;" fill="clear"
+                      (click)="clear()" id="btnCancel">
+                      Cancel
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: center;">
+                    <ion-button style="font-size: 14px !important; font-weight: bold !important;" fill="clear"
+                      (click)="confirm()" id="btnConfirm">
+                      Confirm
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-toolbar>
+            </ion-footer>
+          </ng-template>
+</ionic-selectable>
+  </ion-item>
+</ion-content>
+<!--item-content // Required for Ionic 3 only.-->>

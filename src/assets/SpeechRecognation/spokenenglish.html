@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keywords</title>
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script type="text/javascript" src="https://ksthreejs.s3.ap-south-1.amazonaws.com/lngtranslate.js"></script>
+
+
+    <style type="text/css">
+#logo_heading {
+  width:100%;
+  height:10%;
+
+}
+#logo {
+  width:100px;
+  height:100px;
+}
+#heading {
+  color:red;
+  text-align:center;
+  margin-top:-60px;
+  width:100%;
+  height:100%;
+}
+</style>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+.wrapper {
+    display: flex;
+}
+
+.wrapper > div {
+    flex: 1;
+}
+ #output {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#imgname {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#imgnamep {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#imgnamep1 {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#imgnamep2 {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#imgnamep3 {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#imgnamep4 {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#imgnamep5 {
+    background-color: rgb(207,232,220);
+    border: 2px solid rgb(79,185,227);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#cncp {
+    border-radius: 10px;
+    margin-left:10px;
+    margin-right:10px;
+}
+#micimg {
+
+}
+
+/* Add User Module */
+#add-user-module {
+    width: 30px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    margin-top: -50px;
+
+}
+#add-user-module #open-add-user-form-btn {
+    background: #54bb7d;
+    font-size: 1.5em;
+    color: white;
+    padding-bottom: 5px;
+}
+
+#add-user-module form {
+    position: absolute;
+    padding: 10px;
+    width: 300px;
+    background-color: #e1e1e1;
+    border: 1px solid #999;
+    display: none;
+    border-radius: 10px;
+}
+
+#add-user-module form input {
+    width: 97%;
+    margin: 2px 0;
+}
+
+#add-user-module form button {
+    background: #54bb7d;
+    font-size: 1em;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 10px;
+}
+
+#add-user-module:hover form {
+    display: block;
+}
+/* Add User Module */
+#add-user-module1 {
+    width: 30px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    margin-top: -50px;
+
+}
+#add-user-module1 #open-add-user-form-btn1 {
+    background: #54bb7d;
+    font-size: 1.5em;
+    color: white;
+    padding-bottom: 5px;
+}
+
+#add-user-module1 form {
+    position: absolute;
+    padding: 10px;
+    width: 100px;
+    background-color: #e1e1e1;
+    border: 1px solid #999;
+    display: none;
+    border-radius: 10px;
+}
+
+#add-user-module1 form input {
+    width: 97%;
+    margin: 2px 0;
+}
+
+#add-user-module1 form button {
+    background: #54bb7d;
+    font-size: 1em;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 10px;
+}
+
+#add-user-module1:hover form {
+    display: block;
+}
+
+</style>
+
+    <head>
+    </head>
+<body bgcolor="#2f4f4f">
+<script text/javascript>
+
+var call_jm_sj = "welcome to Practice";
+Interface.t_t_s(call_jm_sj);
+
+
+
+
+
+
+//annyang
+
+
+
+
+
+"use strict";var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(a){return typeof a}:function(a){return a&&"function"==typeof Symbol&&a.constructor===Symbol&&a!==Symbol.prototype?"symbol":typeof a};
+//! annyang
+//! version : 2.6.0
+//! author  : Tal Ater @TalAter
+//! license : MIT
+//! https://www.TalAter.com/annyang/
+!function(a,b){"function"==typeof define&&define.amd?define([],function(){return a.annyang=b(a)}):"object"===("undefined"==typeof module?"undefined":_typeof(module))&&module.exports?module.exports=b(a):a.annyang=b(a)}("undefined"!=typeof window?window:void 0,function(a,b){var c,d=a.SpeechRecognition||a.webkitSpeechRecognition||a.mozSpeechRecognition||a.msSpeechRecognition||a.oSpeechRecognition;if(!d)return null;var e,f,g=[],h={start:[],error:[],end:[],soundstart:[],result:[],resultMatch:[],resultNoMatch:[],errorNetwork:[],errorPermissionBlocked:[],errorPermissionDenied:[]},i=0,j=0,k=!1,l="font-weight: bold; color: #00f;",m=!1,n=!1,o=/\s*\((.*?)\)\s*/g,p=/(\(\?:[^)]+\))\?/g,q=/(\(\?)?:\w+/g,r=/\*\w+/g,s=/[\-{}\[\]+?.,\\\^$|#]/g,t=function(a){return a=a.replace(s,"\\$&").replace(o,"(?:$1)?").replace(q,function(a,b){return b?a:"([^\\s]+)"}).replace(r,"(.*?)").replace(p,"\\s*$1?\\s*"),new RegExp("^"+a+"$","i")},u=function(a){for(var b=arguments.length,c=Array(b>1?b-1:0),d=1;d<b;d++)c[d-1]=arguments[d];a.forEach(function(a){a.callback.apply(a.context,c)})},v=function(){return e!==b},w=function(a,b){a.indexOf("%c")!==-1||b?console.log(a,b||l):console.log(a)},x=function(){v()||c.init({},!1)},y=function(a,b,c){g.push({command:a,callback:b,originalPhrase:c}),k&&w("Command successfully loaded: %c"+c,l)},z=function(a){u(h.result,a);for(var b,c=0;c<a.length;c++){b=a[c].trim(),k&&w("Speech recognized: %c"+b,l);for(var d=0,e=g.length;d<e;d++){var f=g[d],i=f.command.exec(b);if(i){var j=i.slice(1);return k&&(w("command matched: %c"+f.originalPhrase,l),j.length&&w("with parameters",j)),f.callback.apply(this,j),void u(h.resultMatch,b,f.originalPhrase,a)}}}u(h.resultNoMatch,a)};return c={init:function(l){var o=!(arguments.length>1&&arguments[1]!==b)||arguments[1];e&&e.abort&&e.abort(),e=new d,e.maxAlternatives=5,e.continuous="http:"===a.location.protocol,e.lang="en-US",e.onstart=function(){n=!0,u(h.start)},e.onsoundstart=function(){u(h.soundstart)},e.onerror=function(a){switch(u(h.error,a),a.error){case"network":u(h.errorNetwork,a);break;case"not-allowed":case"service-not-allowed":f=!1,(new Date).getTime()-i<200?u(h.errorPermissionBlocked,a):u(h.errorPermissionDenied,a)}},e.onend=function(){if(n=!1,u(h.end),f){var a=(new Date).getTime()-i;j+=1,j%10===0&&k&&w("Speech Recognition is repeatedly stopping and starting. See http://is.gd/annyang_restarts for tips."),a<1e3?setTimeout(function(){c.start({paused:m})},1e3-a):c.start({paused:m})}},e.onresult=function(a){if(m)return k&&w("Speech heard, but annyang is paused"),!1;for(var b=a.results[a.resultIndex],c=[],d=0;d<b.length;d++)c[d]=b[d].transcript;z(c)},o&&(g=[]),l.length&&this.addCommands(l)},start:function(a){x(),a=a||{},m=a.paused!==b&&!!a.paused,f=a.autoRestart===b||!!a.autoRestart,a.continuous!==b&&(e.continuous=!!a.continuous),i=(new Date).getTime();try{e.start()}catch(a){k&&w(a.message)}},abort:function(){f=!1,j=0,v()&&e.abort()},pause:function(){m=!0},resume:function(){c.start()},debug:function(){var a=!(arguments.length>0&&arguments[0]!==b)||arguments[0];k=!!a},setLanguage:function(a){x(),e.lang=a},addCommands:function(b){var c;x();for(var d in b)if(b.hasOwnProperty(d))if(c=a[b[d]]||b[d],"function"==typeof c)y(t(d),c,d);else{if(!("object"===("undefined"==typeof c?"undefined":_typeof(c))&&c.regexp instanceof RegExp)){k&&w("Can not register command: %c"+d,l);continue}y(new RegExp(c.regexp.source,"i"),c.callback,d)}},removeCommands:function(a){a===b?g=[]:(a=Array.isArray(a)?a:[a],g=g.filter(function(b){for(var c=0;c<a.length;c++)if(a[c]===b.originalPhrase)return!1;return!0}))},addCallback:function(c,d,e){var f=a[d]||d;"function"==typeof f&&h[c]!==b&&h[c].push({callback:f,context:e||this})},removeCallback:function(a,c){var d=function(a){return a.callback!==c};for(var e in h)h.hasOwnProperty(e)&&(a!==b&&a!==e||(c===b?h[e]=[]:h[e]=h[e].filter(d)))},isListening:function(){return n&&!m},getSpeechRecognizer:function(){return e},trigger:function(a){return c.isListening()?(Array.isArray(a)||(a=[a]),void z(a)):void(k&&w(n?"Speech heard, but annyang is paused":"Cannot trigger while annyang is aborted"))}}});
+
+
+
+
+const firebaseConfig = {
+apiKey: "AIzaSyBDPVFR4fpJbP655fi0gECiX3rB_DEk1fE",
+authDomain: "health-report-334d5.firebaseapp.com",
+projectId: "health-report-334d5",
+storageBucket: "health-report-334d5.appspot.com",
+messagingSenderId: "192843149376",
+appId: "1:192843149376:web:51df5b1c10bd7779be6fa5",
+measurementId: "G-L1GFZMT005"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+var i = 0;
+var op;
+var imgn;
+var ImgId;
+var ans ="please click the next button and then click & pronounce and speak the visiblw word";
+var valu = "not available";
+//var Imagep1 = valu, Imagep2 = valu, Imagep3 = valu, Imagep4 = valu, Imagep5 = valu;
+var imgp1 = valu, imgp2 = valu, imgp3 = valu, imgp4 = valu, imgp4 = valu;
+var headname = "keywords/";
+var incdec = 69;
+var question1, question2, question3, question4, question5, question6, question7, question8, question9, question10;
+var answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10;
+//var recmike = document.getElementById("recmic");
+var dq1,dq2,dq3,dq4,dq5,dq6,dq7,dq8,dq9,dq10;
+var da1,da2,da3,da4,da5,da6,da7,da8,da9,da10;
+var dp1,dp2,dp3,dp4,dp5;
+
+var commands, commands1, cmd1, cmd2, cmd3, cmd4, cmd5, cmd6, cmd7, cmd8, cmd9, cmd10, cmd11;
+
+
+function f()
+{
+var dfruits = 69;
+incdec = dfruits;
+headname = "Imagestext/";
+console.log(headname);
+}
+function v()
+{
+
+console.log("vegitables");
+}
+function kw()
+{
+var keywords = 5;
+incdec = keywords;
+headname = "keywords/";
+console.log(headname)
+}
+function cn()
+{
+
+console.log("country words");
+}
+function y()
+{
+
+console.log("yes");
+}
+function n()
+{
+
+console.log("no");
+}
+
+
+function incNumber() {
+
+if (i < incdec) {
+i++;
+} else if (i = incdec) {
+i = 0;
+}
+//document.getElementById("display").innerHTML = dict[i-1];
+return i;
+}
+
+function decNumber() {
+
+if (i > 0) {
+--i;
+} else if (i = 0) {
+i = incdec;
+}
+//document.getElementById("display").innerHTML = dict[i];
+return i;
+}
+
+
+
+/* JS comes here */
+function runSpeechRecognition() {
+
+// get output div reference
+var output = document.getElementById("output");
+// get action element reference
+var action = document.getElementById("action");
+// new speech recognition object
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var recognition = new SpeechRecognition();
+
+// This runs when the speech recognition service starts
+recognition.onstart = function() {
+//action.innerHTML = "<small>listening</small>";
+        document.getElementById("recmic").style.visibility = "visible";
+    };
+
+    recognition.onspeechend = function() {
+        //action.innerHTML = "<small>stopped listening</small>";
+        document.getElementById("recmic").style.visibility = "hidden";
+        recognition.stop();
+    }
+
+    // This runs when the speech recognition service returns result
+    recognition.onresult = function(event) {
+        var transcript = event.results[0][0].transcript;
+        var confidence = event.results[0][0].confidence;
+        //output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+        //output.classList.remove("hide");
+        op = output.innerHTML=transcript;
+        console.log(op)
+    };
+
+     // start recognition
+     recognition.start();
+
+     return op
+     //textToAudio();
+}
+
+/* JS comes here */
+
+
+function prev()
+{
+document.getElementById("info").style.visibility = "visible";
+document.getElementById("dteacherh").style.visibility = "visible";
+  ImgId = decNumber();
+
+    var leadsRef = database.ref('Imagestext/').child(ImgId);
+    leadsRef.on('child_added', function(snapshot) {
+        imgn = snapshot.val().ImageName;
+        da1 = snapshot.val().Imageex1;
+
+        dp1 = snapshot.val().Imagep1;
+        dp2 = snapshot.val().Imagep2;
+        dp3 = snapshot.val().Imagep3;
+        dp4 = snapshot.val().Imagep4;
+        dp5 = snapshot.val().Imagep5;
+
+
+        da2 = snapshot.val().Imageex2;
+        da3 = snapshot.val().Imageex3;
+        da4 = snapshot.val().Imageex4;
+        da5 = snapshot.val().Imageex5;
+        da6 = snapshot.val().Imageex6;
+        da7 = snapshot.val().Imageex7;
+        da8 = snapshot.val().Imageex8;
+        da9 = snapshot.val().Imageex9;
+        da10 = snapshot.val().Imageex10;
+
+        dq1 = snapshot.val().IMGQ1;
+        dq2 = snapshot.val().IMGQ2;
+        dq3 = snapshot.val().IMGQ3;
+        dq4 = snapshot.val().IMGQ4;
+        dq5 = snapshot.val().IMGQ5;
+        dq6 = snapshot.val().IMGQ6;
+        dq7 = snapshot.val().IMGQ7;
+        dq8 = snapshot.val().IMGQ8;
+        dq9 = snapshot.val().IMGQ9;
+        dq10 = snapshot.val().IMGQ10;
+
+            if(annyang)
+            {
+
+            console.log(da1);
+            commands1 = {};
+            cmd1 = "hi honey";
+            cmd2 = da1;
+            cmd3 = da2;
+            cmd4 = da3;
+            cmd5 = da4;
+            cmd6 = da5;
+            cmd7 = da6;
+            cmd8 = da7;
+            cmd9 = da8;
+            cmd10 = da9;
+            cmd11 = da10;
+            commands1['yes'] = yesfun;
+            commands1['s'] = yesfun;
+            commands1[''] = pta;
+            commands1['bye honey'] = bye;
+            commands1[cmd1] = hello;
+            commands1[cmd2] = da1f;
+            commands1[cmd3] = da2f;
+            commands1[cmd4] = da3f;
+            commands1[cmd5] = da4f;
+            commands1[cmd6] = da5f;
+            commands1[cmd7] = da6f;
+            commands1[cmd8] = da7f;
+            commands1[cmd9] = da8f;
+            commands1[cmd10] = da9f;
+            commands1[cmd11] = da10f;
+
+            var q1 = "hello  can we start Practice with examples. say yes";
+            var cano = "correct answer can we go to next one";
+           function hello(){
+                //var randomIndex = Math.round(Math.random() * messages.length);
+                //console.log(`%c ${messages[randomIndex]}`,'color: green; font-weight:bold;');
+                var q1 = "hello  can we start practice with examples. say yes";
+                //var q2 = "do you like cheese";
+                //tts(q1);
+                Interface.t_t_s(q1);
+                document.getElementById("qds").innerHTML = q1;
+                document.getElementById("ads").innerHTML = "yes";
+            }
+
+            function pta()
+            {
+                var da = "I did'nt get you please try again";
+                Interface.t_t_s(da);
+            }
+            function yesfun(){
+                //console.log("My name is Billy!");
+                //var q1 = "yes hello  can we start Practice with examples. say yes";
+                //var q2 = "do you like cheese";
+                var call_jm_sj = "i love you deepu for this comfortable";
+                //var refreshInterval = setInterval(Interface.t_t_s("ok lets start  "+dq1), 5000)
+                //clearInterval(refreshInterval);
+                //Interface.t_t_s("ok lets start  "+dq1);
+                //tts(dq1);
+                Interface.t_t_s("ok lets start.  "+dq1)
+                document.getElementById("qds").innerHTML = dq1;
+                document.getElementById("ads").innerHTML = da1;
+            }
+            function bye()
+            {
+                if(annyang)
+                    {
+                        var bie = "okay byee";
+                        //tts(bie);
+                        Interface.t_t_s(bie);
+                        annyang.abort();
+                    }
+            }
+            function da1f()
+            {
+                //tts(cano);
+                //tts(dq2);
+                var cano = "correct answer can we go to next one";
+                //var refreshInterval = setInterval(Interface.t_t_s(cano), 3000)
+
+                Interface.t_t_s(cano+"."+dq2);
+                //clearInterval(refreshInterval);
+                document.getElementById("qds").innerHTML = dq2;
+                document.getElementById("ads").innerHTML = da2;
+            }
+            function da2f()
+            {
+                //tts(cano);
+                //tts(dq3);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq3);
+                document.getElementById("qds").innerHTML = dq3;
+                document.getElementById("ads").innerHTML = da3;
+            }
+            function da3f()
+            {
+                //tts(cano);
+                //tts(dq4);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq4);
+                document.getElementById("qds").innerHTML = dq4;
+                document.getElementById("ads").innerHTML = da4;
+            }
+            function da4f()
+            {
+                //tts(cano);
+                //tts(dq5);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq5);
+                document.getElementById("qds").innerHTML = dq5;
+                document.getElementById("ads").innerHTML = da5;
+            }
+            function da5f()
+            {
+                //tts(cano);
+                //tts(dq6);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq6);
+                document.getElementById("qds").innerHTML = dq6;
+                document.getElementById("ads").innerHTML = da6;
+            }
+            function da6f()
+            {
+                //tts(cano);
+                //tts(dq7);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq7);
+                document.getElementById("qds").innerHTML = dq7;
+                document.getElementById("ads").innerHTML = da7;
+            }
+            function da7f()
+            {
+                //tts(cano);
+                //tts(dq8);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq8);
+                document.getElementById("qds").innerHTML = dq8;
+                document.getElementById("ads").innerHTML = da8;
+            }
+            function da8f()
+            {
+                //tts(cano);
+                //tts(dq9);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq9);
+                document.getElementById("qds").innerHTML = dq9;
+                document.getElementById("ads").innerHTML = da9;
+            }
+            function da9f()
+            {
+                //tts(cano);
+                //tts(dq10);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq10);
+                document.getElementById("qds").innerHTML = dq10;
+                document.getElementById("ads").innerHTML = da10;
+            }
+            function da10f()
+            {
+                var cong = "congugralations and your session is completed. say bye honey"
+                //tts(cang);
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cong);
+            }
+            // Add Commands
+            annyang.addCommands(commands1);
+
+            // Start listening
+            //annyang.start();
+
+            annyang.addCallback('start', function() {onStart();});
+            annyang.addCallback('soundstart', function() {onSoundDetected();});
+            annyang.addCallback('soundend', function() {onSoundStop();});
+            annyang.addCallback('end', function() {onEnd();});
+
+
+            function onStart() {
+            console.log('started listening');
+            document.getElementById("lime").style.visibility = "visible";
+            }
+            function onSoundDetected() {
+            console.log('sound was detected');
+            document.getElementById("blue").style.visibility = "visible";
+
+            }
+            function onSoundStop() {
+            console.log('i hope you stop speaking');
+            document.getElementById("orange").style.visibility = "visible";
+            }
+            function onEnd() {
+            console.log('stop listening');
+            document.getElementById("red").style.visibility = "visible";
+            document.getElementById("lime").style.visibility = "hidden";
+            document.getElementById("blue").style.visibility = "hidden";
+            document.getElementById("orange").style.visibility = "hidden";
+            }
+            }
+
+
+        document.getElementById("imgname").innerHTML = imgn;
+        document.getElementById("imgnamep").innerHTML = imgn;
+
+        document.getElementById("description").innerHTML = snapshot.val().IMGDESC;
+        document.getElementById("p1").innerHTML = dp1;
+        document.getElementById("p2").innerHTML = dp2;
+        document.getElementById("p3").innerHTML = dp3;
+        document.getElementById("p4").innerHTML = dp4;
+        document.getElementById("p5").innerHTML = dp5;
+
+        document.getElementById("ex1").innerHTML = da1;
+        document.getElementById("ex2").innerHTML = da2;
+        document.getElementById("ex3").innerHTML = da3;
+        document.getElementById("ex4").innerHTML = da4;
+        document.getElementById("ex5").innerHTML = da5;
+        document.getElementById("ex6").innerHTML = da6;
+        document.getElementById("ex7").innerHTML = da7;
+        document.getElementById("ex8").innerHTML = da8;
+        document.getElementById("ex9").innerHTML = da9;
+        document.getElementById("ex10").innerHTML = da10;
+        const flag = false;
+        try
+        {
+            document.getElementById("output").src = snapshot.val().ImageURL;
+
+        }
+        catch(err)
+        {
+            console.log("error bro");
+        }
+
+    });
+}
+
+
+
+
+function next()
+{
+document.getElementById("info").style.visibility = "visible";
+document.getElementById("dteacherh").style.visibility = "visible";
+  ImgId = incNumber();
+
+    var leadsRef = database.ref(headname).child(ImgId);
+    leadsRef.on('child_added', function(snapshot) {
+        imgn = snapshot.val().ImageName;
+        da1 = snapshot.val().Imageex1;
+
+        dp1 = snapshot.val().Imagep1;
+        dp2 = snapshot.val().Imagep2;
+        dp3 = snapshot.val().Imagep3;
+        dp4 = snapshot.val().Imagep4;
+        dp5 = snapshot.val().Imagep5;
+
+
+        da2 = snapshot.val().Imageex2;
+        da3 = snapshot.val().Imageex3;
+        da4 = snapshot.val().Imageex4;
+        da5 = snapshot.val().Imageex5;
+        da6 = snapshot.val().Imageex6;
+        da7 = snapshot.val().Imageex7;
+        da8 = snapshot.val().Imageex8;
+        da9 = snapshot.val().Imageex9;
+        da10 = snapshot.val().Imageex10;
+
+        dq1 = snapshot.val().IMGQ1;
+        dq2 = snapshot.val().IMGQ2;
+        dq3 = snapshot.val().IMGQ3;
+        dq4 = snapshot.val().IMGQ4;
+        dq5 = snapshot.val().IMGQ5;
+        dq6 = snapshot.val().IMGQ6;
+        dq7 = snapshot.val().IMGQ7;
+        dq8 = snapshot.val().IMGQ8;
+        dq9 = snapshot.val().IMGQ9;
+        dq10 = snapshot.val().IMGQ10;
+
+            if(annyang)
+            {
+
+            console.log(da1);
+            commands1 = {};
+            cmd1 = "hi honey";
+            cmd2 = da1;
+            cmd3 = da2;
+            cmd4 = da3;
+            cmd5 = da4;
+            cmd6 = da5;
+            cmd7 = da6;
+            cmd8 = da7;
+            cmd9 = da8;
+            cmd10 = da9;
+            cmd11 = da10;
+            commands1['yes'] = yesfun;
+            commands1['s'] = yesfun;
+            commands1[''] = pta;
+            commands1['bye honey'] = bye;
+            commands1[cmd1] = hello;
+            commands1[cmd2] = da1f;
+            commands1[cmd3] = da2f;
+            commands1[cmd4] = da3f;
+            commands1[cmd5] = da4f;
+            commands1[cmd6] = da5f;
+            commands1[cmd7] = da6f;
+            commands1[cmd8] = da7f;
+            commands1[cmd9] = da8f;
+            commands1[cmd10] = da9f;
+            commands1[cmd11] = da10f;
+
+            var q1 = "hello  can we start Practice with examples. say yes";
+            var cano = "correct answer ok we will go to next one";
+
+            function hello(){
+                //var randomIndex = Math.round(Math.random() * messages.length);
+                //console.log(`%c ${messages[randomIndex]}`,'color: green; font-weight:bold;');
+                var q1 = "hello  can we start practice with examples. say yes";
+                //var q2 = "do you like cheese";
+                //tts(q1);
+                Interface.t_t_s(q1);
+                document.getElementById("qds").innerHTML = q1;
+                document.getElementById("ads").innerHTML = "yes";
+            }
+
+            function pta()
+            {
+                var da = "I did'nt get you please try again";
+                Interface.t_t_s(da);
+            }
+            function yesfun(){
+                //console.log("My name is Billy!");
+                //var q1 = "yes hello  can we start Practice with examples. say yes";
+                //var q2 = "do you like cheese";
+                var call_jm_sj = "i love you deepu for this comfortable";
+                //var refreshInterval = setInterval(Interface.t_t_s("ok lets start  "+dq1), 5000)
+                //clearInterval(refreshInterval);
+                //Interface.t_t_s("ok lets start  "+dq1);
+                //tts(dq1);
+                Interface.t_t_s("ok lets start.  "+dq1)
+                document.getElementById("qds").innerHTML = dq1;
+                document.getElementById("ads").innerHTML = da1;
+            }
+            function bye()
+            {
+                if(annyang)
+                    {
+                        var bie = "okay byee";
+                        //tts(bie);
+                        Interface.t_t_s(bie);
+                        annyang.abort();
+                    }
+            }
+            function da1f()
+            {
+                //tts(cano);
+                //tts(dq2);
+                var cano = "correct answer can we go to next one";
+                //var refreshInterval = setInterval(Interface.t_t_s(cano), 3000)
+
+                Interface.t_t_s(cano+"."+dq2);
+                //clearInterval(refreshInterval);
+                document.getElementById("qds").innerHTML = dq2;
+                document.getElementById("ads").innerHTML = da2;
+            }
+            function da2f()
+            {
+                //tts(cano);
+                //tts(dq3);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq3);
+                document.getElementById("qds").innerHTML = dq3;
+                document.getElementById("ads").innerHTML = da3;
+            }
+            function da3f()
+            {
+                //tts(cano);
+                //tts(dq4);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq4);
+                document.getElementById("qds").innerHTML = dq4;
+                document.getElementById("ads").innerHTML = da4;
+            }
+            function da4f()
+            {
+                //tts(cano);
+                //tts(dq5);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq5);
+                document.getElementById("qds").innerHTML = dq5;
+                document.getElementById("ads").innerHTML = da5;
+            }
+            function da5f()
+            {
+                //tts(cano);
+                //tts(dq6);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq6);
+                document.getElementById("qds").innerHTML = dq6;
+                document.getElementById("ads").innerHTML = da6;
+            }
+            function da6f()
+            {
+                //tts(cano);
+                //tts(dq7);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq7);
+                document.getElementById("qds").innerHTML = dq7;
+                document.getElementById("ads").innerHTML = da7;
+            }
+            function da7f()
+            {
+                //tts(cano);
+                //tts(dq8);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq8);
+                document.getElementById("qds").innerHTML = dq8;
+                document.getElementById("ads").innerHTML = da8;
+            }
+            function da8f()
+            {
+                //tts(cano);
+                //tts(dq9);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq9);
+                document.getElementById("qds").innerHTML = dq9;
+                document.getElementById("ads").innerHTML = da9;
+            }
+            function da9f()
+            {
+                //tts(cano);
+                //tts(dq10);
+                var cano = "correct answer can we go to next one";
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cano+". "+dq10);
+                document.getElementById("qds").innerHTML = dq10;
+                document.getElementById("ads").innerHTML = da10;
+            }
+            function da10f()
+            {
+                var cong = "congugralations and your session is completed. say bye honey"
+                //tts(cang);
+                //Interface.t_t_s(cano);
+                Interface.t_t_s(cong);
+            }
+
+
+            // Add Commands
+            annyang.addCommands(commands1);
+
+            // Start listening
+            //annyang.start();
+
+            annyang.addCallback('start', function() {onStart();});
+            annyang.addCallback('soundstart', function() {onSoundDetected();});
+            annyang.addCallback('soundend', function() {onSoundStop();});
+            annyang.addCallback('end', function() {onEnd();});
+
+
+            function onStart() {
+            console.log('started listening');
+            document.getElementById("lime").style.visibility = "visible";
+            }
+            function onSoundDetected() {
+            console.log('sound was detected');
+            document.getElementById("blue").style.visibility = "visible";
+
+            }
+            function onSoundStop() {
+            console.log('i hope you stop speaking');
+            document.getElementById("orange").style.visibility = "visible";
+            }
+            function onEnd() {
+            console.log('stop listening');
+            document.getElementById("red").style.visibility = "visible";
+            document.getElementById("lime").style.visibility = "hidden";
+            document.getElementById("blue").style.visibility = "hidden";
+            document.getElementById("orange").style.visibility = "hidden";
+            }
+            }
+        document.getElementById("imgname").innerHTML = imgn;
+        document.getElementById("imgnamep").innerHTML = imgn;
+
+        document.getElementById("description").innerHTML = snapshot.val().IMGDESC;
+        document.getElementById("p1").innerHTML = dp1;
+        document.getElementById("p2").innerHTML = dp2;
+        document.getElementById("p3").innerHTML = dp3;
+        document.getElementById("p4").innerHTML = dp4;
+        document.getElementById("p5").innerHTML = dp5;
+
+        document.getElementById("ex1").innerHTML = da1;
+        document.getElementById("ex2").innerHTML = da2;
+        document.getElementById("ex3").innerHTML = da3;
+        document.getElementById("ex4").innerHTML = da4;
+        document.getElementById("ex5").innerHTML = da5;
+        document.getElementById("ex6").innerHTML = da6;
+        document.getElementById("ex7").innerHTML = da7;
+        document.getElementById("ex8").innerHTML = da8;
+        document.getElementById("ex9").innerHTML = da9;
+        document.getElementById("ex10").innerHTML = da10;
+
+
+
+        const flag = false;
+        try
+        {
+            document.getElementById("output").src = snapshot.val().ImageURL;
+
+        }
+        catch(err)
+        {
+            console.log("error bro");
+        }
+
+    });
+}
+
+function mean1()
+{
+    console.log("working")
+    alert(imgn)
+    const x = document.createElement("h1");
+    //x.innerHTML = "<h1 style="color:white;" id="imgname" ></h1>";
+
+}
+//ans ="please click the next button and then click & pronounce and speak the visiblw word";
+function textToAudio() {
+    //let msg = document.getElementById("text-to-speech").value;
+
+        console.log(imgn);
+        //console.log(op.toLowerCase())
+        //const top = op.prototype.toLocaleLowerCase();
+        //console.log(top);
+        if(imgn.toLowerCase() == op.toLowerCase())
+        {
+            ans = "your pronounciation is correct";
+            console.log(ans)
+            Interface.t_t_s(ans);
+        }
+        else{
+            ans = "sorry i didnot get you. come again";
+            Interface.t_t_s(ans);
+        }
+
+}
+function te()
+{
+    var text = "hello deepu hello how are you";
+    Interface.t_t_s(text);
+}
+var anst;
+var myVar;
+var cano = "correct answer ok we will go to next one";
+
+function teachersp()
+{
+
+
+    //https://ksthreejs.s3.ap-south-1.amazonaws.com/annyang.js
+        //var messages = ['🔊 Hey', '🔊 Hi, there!', '🔊 Hi!', '🔊 Hello'];
+        //var testi = "help";
+
+
+
+        if(annyang)
+        {
+            console.log("We have annyang!");
+           // var annyangfb = database.ref(headname).child(1);
+        //annyangfb.on('child_added', function(snapshot)
+        //{
+            //da1 = snapshot.val().Imageex1;
+            //console.log("fbd"+da1);
+
+
+            console.log(da1);
+            commands = {};
+            cmd1 = "hi honey";
+            //commands['yes'] = yesfun;
+            //commands['s'] = yesfun;
+            commands['bye honey'] = bye;
+            commands[cmd1] = hello;
+
+
+
+
+
+            var q1 = "hello  can we start practise with examples. say yes";
+            function hello(){
+                //var randomIndex = Math.round(Math.random() * messages.length);
+                //console.log(`%c ${messages[randomIndex]}`,'color: green; font-weight:bold;');
+                var q1 = "hello  can we start practise with examples. say yes";
+                //var q2 = "do you like cheese";
+                //tts(q1);
+                Interface.t_t_s(q1);
+            }
+
+            function yesfun(){
+                //console.log("My name is Billy!");
+                var nxto = "click next button to proceed";
+                //tts(nxto);
+                //Interface.t_t_s(nxto);
+            }
+            function bye()
+            {
+                var bie = "okay byee";
+                //tts(bie);
+                Interface.t_t_s(bie);
+            }
+            function da1f()
+            {
+                //tts(cano);
+
+                var nxto = "click next button to proceed";
+                //tts(nxto);
+                Interface.t_t_s(nxto);
+            }
+
+
+
+
+            // Add Commands
+            annyang.addCommands(commands);
+
+            // Start listening
+            annyang.start();
+
+
+            annyang.addCallback('start', function() {onStart();});
+            annyang.addCallback('soundstart', function() {onSoundDetected();});
+            annyang.addCallback('soundend', function() {onSoundStop();});
+            annyang.addCallback('end', function() {onEnd();});
+
+
+            function onStart() {
+            console.log('started listening');
+            document.getElementById("lime").style.visibility = "visible";
+            }
+            function onSoundDetected() {
+            console.log('sound was detected');
+            document.getElementById("blue").style.visibility = "visible";
+
+            }
+            function onSoundStop() {
+            console.log('i hope you stop speaking');
+            document.getElementById("orange").style.visibility = "visible";
+            }
+            function onEnd() {
+            console.log('stop listening');
+            document.getElementById("red").style.visibility = "visible";
+            document.getElementById("lime").style.visibility = "hidden";
+            document.getElementById("blue").style.visibility = "hidden";
+            document.getElementById("orange").style.visibility = "hidden";
+            }
+
+            var recognition = annyang.getSpeechRecognizer();
+
+            annyang.addCallback('result', function(phrases) {
+            console.log('Speech recognized. Possible sentences said:');
+            console.log(phrases);
+            document.getElementById("yds").innerHTML = phrases[0];
+            });
+
+
+
+        //});
+         }
+}
+
+
+function speakA()
+{
+
+    Interface.t_t_s(imgn);
+}
+function lipA()
+{
+    Interface.t_t_s(op);
+}
+
+ function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+</script>
+    <div id="logo_heading">
+        <div id="logodiv">
+            <a id="aid" href="#">
+                <img
+                        id="logo"
+                        src="https://ksthreejs.s3.ap-south-1.amazonaws.com/Sproud_Knowledge.png"
+                        data-name="Sproud Knowledge"></img>
+            </a>
+            <h1 translate="no" id="heading">Diction</h1>
+        </div>
+    </div>
+    <br>
+
+    <div class="topnav">
+        <div style=" margin-left: 10px;" float:left; id="google_translate_element">
+        </div style="margin-top: 0px">
+        <div>
+            <select style="margin-top: 0px float:left; margin-left: 100px;" id="diction_id" onchange="fvkcc()">
+                <option >Imagestext</options>
+                <option >vegitables</options>
+                <option >countrynames</options>
+                <option >keywords</options>
+                <option >colornmes</options>
+                <option >productnames</options>
+
+            </select>
+        </div>
+    </div>
+    <p translate="no" style="margin-left:10px; color:white">note: click the > btn to next</p>
+    <p translate="no" style="margin-left:10px; color:white">note: click the mic btn and speak visible word</p>
+    <div class="wrapper">
+        <div class="box1">
+
+
+
+            <a href="#" translate="no" onclick="prev()">
+                <h1 style="margin-left:5px; color:white; margin-top:180px;">❮</h1>
+            </a>
+
+
+        </div>
+
+        <div class="box2">
+            <div style=" width:100px; margin-left:100px; text-align:center;">
+                <ul class="nav">
+                    <li id="lime" style="visibility:hidden; color:lime;">*</li>
+                    <li id="blue" style="visibility:hidden; color:rgb(255, 165, 0);">*</li>
+                    <li id="orange" style="visibility:hidden; color:white;">*</li>
+                    <li id="red" style="visibility:hidden; color:rgb(255, 0, 0);">*</li>
+                </ul>
+            </div>
+            <p id="qds" translate="no" style=" color:red; margin-left:10px; font-size:0.8em;">question</p>
+            <p id="ads" translate="no" style=" color:white; margin-left:10px; font-size:0.8em;">actual answer</p>
+            <p id="yds" translate="no" style=" color:orange; margin-left:10px; font-size:0.8em;">your answer</p>
+
+            <img id="output"
+                 style="border-radius: 8px; width:300px; height:250px; "
+                 src="https://ksthreejs.s3.ap-south-1.amazonaws.com/Sproud_Knowledge.png">
+            <h1 id="recmic"
+                style="color:red; margin-top:-50px; text-align:center; visibility:hidden;">...</h1>
+            </img>
+
+            <textarea readonly translate="no" id="imgname"
+                      style="text-align:center; width:300px; color:green;">
+    click > button
+    </textarea>
+
+            <p style="text-align:center; width:300px; color:green;"  id="imgnamep" >
+                click > button
+            </p>
+
+        </div>
+
+        <div class="box3">
+            <a href="#"  translate="no" onclick="next()">
+                <h1
+                        style="text-align:right; margin-right:10px; color:white; margin-top:180px;">
+                    ❯
+                </h1>
+            </a>
+
+        </div>
+    </div>
+
+
+    <style>
+.nav {
+  background-color: #000000;
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  font-size: 10px;
+  padding: 5px;
+}
+</style>
+    <div
+            style="
+    margin-left:10px;
+    margin-right:10px;
+  border:2px solid green;
+  ">
+
+        <ul class="nav">
+            <li id="dteacherh" style="visibility:hidden;">
+                <a href="#" translate="no" onclick="teachersp()">
+                    <img
+                            src="https://firebasestorage.googleapis.com/v0/b/health-report-334d5.appspot.com/o/teach.png?alt=media&token=72914553-0870-408e-9497-e122071ee3eb"
+                            alt="Snow" style="margin-top:-20px; margin-left:10px;">
+                    <p style=" margin-top:-4px; color:orange; margin-left:10px; font-size:2em;">Teacher</p>
+
+                </a>
+            </li>
+            <li><a href="#home" translate="no" onclick="runSpeechRecognition()">
+                <img
+                        id="listen"
+                        src="https://firebasestorage.googleapis.com/v0/b/health-report-334d5.appspot.com/o/tmicrophone.png?alt=media&token=2898985e-741f-4ae5-a4c1-977a5a2b986e"
+                        style="width:40px; height:40px;">
+                </img>
+                <p style="margin-top:-4px; color:orange;  font-size:2em;">speak</p>
+            </a></li>
+            <li><a href="#about" translate="no" onclick="textToAudio()">
+                <img
+                        id="listen"
+                        src="https://firebasestorage.googleapis.com/v0/b/health-report-334d5.appspot.com/o/check.png?alt=media&token=1a2c798c-f1ce-458c-9d2a-486384819974"
+                        style="width:40px; height:40px;">
+                </img>
+                <p style="margin-top:-4px; color:orange;  font-size:2em;">check</p>
+            </a></li>
+            <li><a href="#clients" translate="no" onclick="speakA()">
+                <img
+                        id="listen"
+                        src="https://firebasestorage.googleapis.com/v0/b/health-report-334d5.appspot.com/o/speakerA.png?alt=media&token=293a30e2-b8c0-4aed-86c9-496a75e53132"
+                        style="width:40px; height:40px;">
+                </img>
+                <p style="margin-top:-4px; color:orange; font-size:2em;">listen</p>
+            </a></li>
+            <li><a href="#contact" translate="no" onclick="lipA()">
+                <img
+                        id="listen"
+                        src="https://firebasestorage.googleapis.com/v0/b/health-report-334d5.appspot.com/o/lipA.png?alt=media&token=3a2a027a-e8f6-42f2-9c25-deae06566177"
+                        style="width:40px; height:40px;">
+                </img>
+                <p style="margin-top:-4px; color:orange;  font-size:2em;">voice</p>
+            </a></li>
+        </ul>
+    </div>
+    <p translate="no" id="info" style="visibility:hidden; color:white; margin-left:10px;">click on teacher and say hi honey to begin pracrise</p>
+
+
+        <br></br>
+
+
+        <div translate="no"
+             style="background-color:rgb(60, 60, 60);
+
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:10px;
+  "
+        >
+            <p id="description"style="color:yellow;margin-left:30px;">
+            </p>
+
+            <p id="p1" style="color:lime; margin-left:50px;"></p>
+            <p id="p2" style="color:lime; margin-left:50px;"></p>
+            <p id="p3" style="color:lime; margin-left:50px;"></p>
+            <p id="p4" style="color:lime; margin-left:50px;"></p>
+            <p id="p5" style="color:lime; margin-left:50px;"></p>
+
+
+        </div>
+
+        <p translate="no" style="color:yellow;margin-left:30px;">Examples :
+        </p>
+        <div translate="no"
+             style="background-color:rgb(60, 60, 60);
+    border:2px solid green;
+    margin-left:10px;
+    margin-right:10px;
+  "
+        >
+            <p id="ex1" style="color:orange; margin-left:50px;"></p>
+            <p id="ex2" style="color:orange; margin-left:50px;"></p>
+            <p id="ex3" style="color:orange; margin-left:50px;"></p>
+            <p id="ex4" style="color:orange; margin-left:50px;"></p>
+            <p id="ex5" style="color:orange; margin-left:50px;"></p>
+            <p id="ex6" style="color:orange; margin-left:50px;"></p>
+            <p id="ex7" style="color:orange; margin-left:50px;"></p>
+            <p id="ex8" style="color:orange; margin-left:50px;"></p>
+            <p id="ex9" style="color:orange; margin-left:50px;"></p>
+            <p id="ex10" style="color:orange; margin-left:50px;"></p>
+        </div>
+
+        <body>
+        <html>

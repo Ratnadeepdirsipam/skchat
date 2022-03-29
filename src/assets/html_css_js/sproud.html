@@ -1,0 +1,81 @@
+<Doctyle>
+<html>
+<head>
+</head>
+<body bgcolor="green">
+
+<style>
+#output {
+    width:300px;
+    height:200px;
+}
+</style>
+
+<div class="slug">
+    <h1>{{ title }}</h1>
+    <em>{{ date }}</em>
+     - <span id="readTime"
+      class="serverData">{ content|word_count }</span> minutes
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+	
+<script>
+  
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBDPVFR4fpJbP655fi0gECiX3rB_DEk1fE",
+    authDomain: "health-report-334d5.firebaseapp.com",
+    projectId: "health-report-334d5",
+    storageBucket: "health-report-334d5.appspot.com",
+    messagingSenderId: "192843149376",
+    appId: "1:192843149376:web:51df5b1c10bd7779be6fa5",
+    measurementId: "G-L1GFZMT005"
+      };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+  
+//uploaddata();
+function uploaddata()
+{
+    var database = firebase.database();
+    var ImgName = "upload successful";
+    var dataRef = database.ref("initilizingonstart");//.push();
+    dataRef.set(
+    {
+        ImgName,
+    });
+}
+
+//wordtime("hii honey");    
+   console.log(wordtime("hii honey"));
+function wordtime(wtc)
+{
+    const setNumWordsInText = b => {
+  let s = b
+  s = s.replace(/(^\s*)|(\s*$)/gi, "")
+  s = s.replace(/[ ]{2,}/gi, " ")
+  s = s.replace(/\n /, "\n")
+  return s.split(" ").length
+}
+
+const updateWPM = (t, w) => (w / t) * 60
+
+const txt = wtc;
+const numWordsInText = setNumWordsInText(txt)
+const seconds = 3
+const wpm = updateWPM(seconds, numWordsInText)
+//console.log(wpm)
+return wpm
+}
+ 
+</script>  
+</body>
+</html>
